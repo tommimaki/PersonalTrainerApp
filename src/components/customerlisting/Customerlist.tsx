@@ -30,7 +30,7 @@ export const Customerlist = () => {
 
     return (
         <div>
-            <h2>Customerlist</h2>
+
             <Customertable list={customerList} />
         </div>
     )
