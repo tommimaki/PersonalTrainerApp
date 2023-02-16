@@ -17,20 +17,20 @@ function App() {
     <div className="App">
       <BrowserRouter>
 
-      <AppBar position='static'>
-        <Toolbar>
-        <Typography variant="h4" component={Link} to="/" style={{ textDecoration: 'none', color: 'inherit' }}>
-            PT app
-          </Typography>
-          <Typography variant="h6" style={{ flexGrow: 1 }}></Typography>
-          <Typography variant="subtitle1" component={Link} to="/customerlist" style={{ textDecoration: 'none', color: 'inherit' }}>
-            Customer List
-          </Typography>
-          <Typography variant="subtitle1" component={Link} to="/traininglist" style={{ textDecoration: 'none', color: 'inherit' }}>
-            Traininglist
-          </Typography>
-        </Toolbar>
-      </AppBar>
+        <AppBar position='static'>
+          <Toolbar>
+            <Typography variant="h4" component={Link} to="/" style={{ textDecoration: 'none', color: 'inherit' }}>
+              PT app
+            </Typography>
+            <Typography variant="h6" style={{ flexGrow: 1 }}></Typography>
+            <Typography variant="subtitle1" component={Link} to="/customerlist" style={{ textDecoration: 'none', color: 'inherit', marginRight: '100px' }}>
+              Customer List
+            </Typography>
+            <Typography variant="subtitle1" component={Link} to="/traininglist" style={{ textDecoration: 'none', color: 'inherit', marginRight: '20%' }}>
+              Traininglist
+            </Typography>
+          </Toolbar>
+        </AppBar>
         <Routes>
           <Route path='/' element={<HomePage />} />
           <Route path='/customerlist' element={<Customerlist />} />

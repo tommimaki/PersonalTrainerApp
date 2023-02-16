@@ -1,6 +1,17 @@
 export type Training = {
-    date: string;
+    id: number;
+    date: Date;
+    duration: number;
     activity: string;
-    duration: string;
-    customer: string;
-};
+    customer: {
+      id: number;
+      firstname: string;
+      lastname: string;
+      streetaddress: string;
+      postcode: string;
+      city: string;
+      email: string;
+      phone: string;
+    };
+  };
+  
