@@ -1,9 +1,12 @@
-import React from "react";
+import React, { useState } from "react";
 import { AgGridReact } from 'ag-grid-react';
 import 'ag-grid-community/styles/ag-grid.css';
 import 'ag-grid-community/styles/ag-theme-alpine.css';
-import { ValueFormatterParams } from 'ag-grid-community'
+
 import { Button } from '@mui/material'
+import { GridApi } from 'ag-grid-community';
+import { ValueFormatterParams, ValueGetterParams } from 'ag-grid-community';
+
 
 
 interface Props {
@@ -12,7 +15,29 @@ interface Props {
 }
 
 export const Trainingtable = (props: Props) => {
+    const [gridApi, setGridApi] = useState<GridApi | null>(null);
     console.log(props.list)
+    function onGridReady(params: any) {
+        setGridApi(params.api);
+    }
+
+    const handleExportButtonClick = () => {
+        if (gridApi) {
+            const params = {
+                fileName: 'data.csv',
+                suppressQuotes: true,
+                columnKeys: ['customer', 'activity', 'duration', 'date/time']
+            };
+            const csvData = gridApi.getDataAsCsv(params);
+            const modifiedCsvData = csvData || '';
+            const link = document.createElement('a');
+            link.setAttribute('href', 'data:text/csv;charset=utf-8,' + encodeURIComponent(modifiedCsvData));
+            link.setAttribute('download', params.fileName);
+            link.click();
+        }
+    };
+
+
 
     const columns = [
         { field: 'customer', sortable: true, filter: "agTextColumnFilter" },
@@ -22,31 +47,33 @@ export const Trainingtable = (props: Props) => {
             field: 'date/time',
             sortable: true,
             filter: true,
-            valueFormatter: (params: ValueFormatterParams) => {
+            valueGetter: (params: ValueGetterParams) => {
                 const date = new Date(params.data.date);
-                return date.toLocaleDateString("en-GB", {
+                const hours = date.getHours().toString().padStart(2, '0');
+                const minutes = date.getMinutes().toString().padStart(2, '0');
+                const formattedDate = date.toLocaleDateString("en-GB", {
                     day: "2-digit",
                     month: "2-digit",
                     year: "numeric",
-                    hour: "2-digit",
-                    minute: "2-digit",
                 });
+                return `${formattedDate}, ${hours}:${minutes}`;
             },
+
         },
         {
             field: 'id',
+            headerName: '',
             cellRendererFramework: (params: any) => (
                 <Button
                     variant='text' style={{ color: 'red' }}
                     onClick={() => {
-                        console.log(params.value);
                         props.deleteTraining(params.value);
-
                     }}>Delete</Button>
             ),
         },
 
     ]
+
 
     const rows = props.list.map(training => {
         return {
@@ -60,7 +87,8 @@ export const Trainingtable = (props: Props) => {
 
     return (
         <div className="ag-theme-alpine-dark" style={{ height: '100vh', width: '100%' }}>
-            <AgGridReact columnDefs={columns} rowData={rows} />
+            <button onClick={handleExportButtonClick}>Export to CSV</button>
+            <AgGridReact columnDefs={columns} rowData={rows} onGridReady={onGridReady} />
         </div>
     )
 }

@@ -10,6 +10,7 @@ export const Traininglist = () => {
 
     const [addTrainingDialogOpen, setAddTrainingDialogOpen] = useState(false);
     const [trainingList, setTrainingList] = useState<Object[]>([]);
+    const [gridApi, setGridApi] = useState(null);
     function fetchTrainings(): Promise<Training[]> {
 
         let url = 'https://traineeapp.azurewebsites.net/gettrainings'
@@ -78,6 +79,8 @@ export const Traininglist = () => {
 
     return (
         <div>
+
+
             <Button onClick={() => setAddTrainingDialogOpen(true)}> add training</Button>
             <AddTraining open={addTrainingDialogOpen} addTraining={addTraining} onClose={() => { setAddTrainingDialogOpen(false) }} />
             <Trainingtable list={trainingList} deleteTraining={deleteTraining} />

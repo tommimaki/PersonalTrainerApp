@@ -144,7 +144,6 @@ export const AddTraining: React.FC<AddTrainingProps> = (props: AddTrainingProps)
                             <em>Select customer</em>
                         </MenuItem>
                         {customerList.map((customer: any) => {
-                            console.log(customer)
                             return <MenuItem value={customer.links[0].href}>{customer.firstname} {customer.lastname}</MenuItem>;
                         })}
                     </Select>
