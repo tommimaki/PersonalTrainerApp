@@ -6,6 +6,7 @@ import { AppBar, Toolbar, Typography } from '@mui/material';
 
 import { Customerlist } from './components/customerlisting/Customerlist';
 import { Traininglist } from './components/traininlisting/Traininglist';
+import Calendar from './components/Calendar';
 import HomePage from './components/Home';
 
 import './App.css';
@@ -30,12 +31,16 @@ function App() {
             <Typography variant="subtitle1" component={Link} to="/traininglist" style={{ textDecoration: 'none', color: 'inherit', marginRight: '20%' }}>
               Traininglist
             </Typography>
+            <Typography variant="subtitle1" component={Link} to="/calendar" style={{ textDecoration: 'none', color: 'inherit', marginRight: '20%' }}>
+              Calendar
+            </Typography>
           </Toolbar>
         </AppBar>
         <Routes>
           <Route path='/' element={<HomePage />} />
           <Route path='/customerlist' element={<Customerlist />} />
           <Route path='/traininglist' element={<Traininglist />} />
+          <Route path='/calendar' element={<Calendar />} />
         </Routes>
       </BrowserRouter>
 

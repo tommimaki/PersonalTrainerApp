@@ -1,7 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Customerlist } from './customerlisting/Customerlist';
-import { Traininglist } from './traininlisting/Traininglist';
+
 
 const HomePage = () => {
   return (

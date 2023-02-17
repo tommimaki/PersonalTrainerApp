@@ -5,9 +5,7 @@ import 'ag-grid-community/styles/ag-theme-alpine.css';
 
 import { Button } from '@mui/material'
 import { GridApi } from 'ag-grid-community';
-import { ValueFormatterParams, ValueGetterParams } from 'ag-grid-community';
-
-
+import { ValueGetterParams } from 'ag-grid-community';
 
 interface Props {
     list: { [key: string]: any }[]
@@ -36,9 +34,6 @@ export const Trainingtable = (props: Props) => {
             link.click();
         }
     };
-
-
-
     const columns = [
         { field: 'customer', sortable: true, filter: "agTextColumnFilter" },
         { field: 'activity', sortable: true, filter: true },
@@ -71,7 +66,6 @@ export const Trainingtable = (props: Props) => {
                     }}>Delete</Button>
             ),
         },
-
     ]
 
 
