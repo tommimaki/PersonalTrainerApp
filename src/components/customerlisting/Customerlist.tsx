@@ -8,14 +8,13 @@ import { Addcustomer } from "./Addcustomer";
 
 export const Customerlist = () => {
 
-    let url = 'https://traineeapp.azurewebsites.net/api/customers'
 
     const [customerList, setCustomerList] = useState<Object[]>([]);
     const [addCustomerDialogOpen, setAddCustomerDialogOpen] = useState(false);
 
+    let url = 'https://traineeapp.azurewebsites.net/api/customers'
 
     function fetchCustomers(): Promise<Customer[]> {
-
         return fetch(url)
             .then(response => response.json())
             .then(data => data.content)

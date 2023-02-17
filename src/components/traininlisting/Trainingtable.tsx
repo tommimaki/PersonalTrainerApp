@@ -3,10 +3,12 @@ import { AgGridReact } from 'ag-grid-react';
 import 'ag-grid-community/styles/ag-grid.css';
 import 'ag-grid-community/styles/ag-theme-alpine.css';
 import { ValueFormatterParams } from 'ag-grid-community'
+import { Button } from '@mui/material'
 
 
 interface Props {
     list: { [key: string]: any }[]
+    deleteTraining: (id: number) => void;
 }
 
 export const Trainingtable = (props: Props) => {
@@ -30,7 +32,20 @@ export const Trainingtable = (props: Props) => {
                     minute: "2-digit",
                 });
             },
-        }
+        },
+        {
+            field: 'id',
+            cellRendererFramework: (params: any) => (
+                <Button
+                    variant='text' style={{ color: 'red' }}
+                    onClick={() => {
+                        console.log(params.value);
+                        props.deleteTraining(params.value);
+
+                    }}>Delete</Button>
+            ),
+        },
+
     ]
 
     const rows = props.list.map(training => {
@@ -39,6 +54,7 @@ export const Trainingtable = (props: Props) => {
             customer: `${training.customer.firstname}  ${training.customer.lastname}`,
             duration: training.duration,
             date: training.date,
+            id: training.id
         };
     });
 
