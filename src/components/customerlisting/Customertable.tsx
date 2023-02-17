@@ -10,12 +10,14 @@ import './Customertable.css';
 
 interface Props {
     list: { [key: string]: any }[]
+
 }
 
 
 
 export const Customertable = (props: Props) => {
     console.log(props.list)
+
 
 
 
