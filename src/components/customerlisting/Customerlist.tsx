@@ -44,6 +44,37 @@ export const Customerlist = () => {
 
 
 
+    function deleteCustomer(link: string) {
+        console.log('deleteCustomer called with link:', link);
+        if (window.confirm('Would you like to delete the selected customer?')) {
+            fetch(link, {
+                method: 'DELETE'
+            })
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Failed to delete customer.');
+                    }
+                    fetchCustomers().then(data => setCustomerList(data))
+                })
+                .catch(error => console.log(error))
+        }
+    }
+
+
+    function updateCustomer(customer: Customer, link: string) {
+        fetch(link, {
+            method: 'PUT',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(customer)
+        })
+            .then(response => response.json())
+            .then(data => {
+                console.log(data);
+                fetchCustomers().then(data => setCustomerList(data))
+            })
+            .catch(error => console.log(error))
+    }
+
 
     useEffect(() => {
         fetchCustomers().then(data => setCustomerList(data))
@@ -55,7 +86,7 @@ export const Customerlist = () => {
         <div>
             <Button onClick={() => setAddCustomerDialogOpen(true)}>Add Customer</Button>
             <Addcustomer open={addCustomerDialogOpen} addCustomer={addCustomer} onClose={() => setAddCustomerDialogOpen(false)} />
-            <Customertable list={customerList} />
+            <Customertable list={customerList} deleteCustomer={deleteCustomer} updateCustomer={updateCustomer} />
         </div>
     )
 }

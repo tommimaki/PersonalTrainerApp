@@ -4,13 +4,19 @@ import 'ag-grid-community/styles/ag-grid.css';
 import 'ag-grid-community/styles/ag-theme-alpine.css';
 import './Customertable.css';
 
+import { Button } from '@mui/material';
+import { Customer } from "./CustomerDef";
+import { EditCustomer } from './Editcustomer';
+
+
 
 
 
 
 interface Props {
     list: { [key: string]: any }[]
-
+    deleteCustomer: (link: string) => void;
+    updateCustomer: (customer: Customer, link: string) => void;
 }
 
 
@@ -30,7 +36,27 @@ export const Customertable = (props: Props) => {
         { field: 'phone', sortable: true, filter: "agNumberColumnFilter" },
         { field: 'streetaddress', sortable: true, filter: true },
         { field: 'postcode', sortable: true, filter: "agNumberColumnFilter" },
-        { field: 'city', sortable: true, filter: "agTextColumnFilter" }
+        { field: 'city', sortable: true, filter: "agTextColumnFilter" },
+        {
+            headerName: '',
+            width: 100,
+            cellRendererFramework: (params: any) => (
+                <EditCustomer customer={params.data} updateCustomer={props.updateCustomer} link={params.data.link} />
+            ),
+        },
+        {
+            field: 'link',
+            cellRendererFramework: (params: any) => (
+                <Button
+                    variant='text' style={{ color: 'red' }}
+                    onClick={() => {
+                        console.log(params.value);
+                        props.deleteCustomer(params.value);
+
+                    }}>Delete</Button>
+            ),
+        },
+
     ]
 
 
@@ -44,6 +70,7 @@ export const Customertable = (props: Props) => {
             streetaddress: client.streetaddress,
             postcode: client.postcode,
             city: client.city,
+            link: client.links[0].href
         };
     });
 
