@@ -8,6 +8,7 @@ import { Customerlist } from './components/customerlisting/Customerlist';
 import { Traininglist } from './components/traininlisting/Traininglist';
 import Calendar from './components/Calendar';
 import HomePage from './components/Home';
+import Stats from './components/Stats';
 
 import './App.css';
 
@@ -34,6 +35,9 @@ function App() {
             <Typography variant="subtitle1" component={Link} to="/calendar" style={{ textDecoration: 'none', color: 'inherit', marginRight: '20%' }}>
               Calendar
             </Typography>
+            <Typography variant="subtitle1" component={Link} to="/stats" style={{ textDecoration: 'none', color: 'inherit', marginRight: '20%' }}>
+              Statistics
+            </Typography>
           </Toolbar>
         </AppBar>
         <Routes>
@@ -41,6 +45,7 @@ function App() {
           <Route path='/customerlist' element={<Customerlist />} />
           <Route path='/traininglist' element={<Traininglist />} />
           <Route path='/calendar' element={<Calendar />} />
+          <Route path='/stats' element={<Stats />} />
         </Routes>
       </BrowserRouter>
 

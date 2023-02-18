@@ -1,5 +1,6 @@
 
 import { Customer, CustomerResponse } from "../customerlisting/CustomerDef";
+import { Training } from "../traininlisting/Training";
 
 const baseUrl = "https://traineeapp.azurewebsites.net/api/customers";
 
@@ -44,5 +45,16 @@ export function updateCustomer(
         .catch((error) => {
             console.log(error);
             return null;
+        });
+}
+
+export function fetchTrainings(): Promise<Training[]> {
+    const url = 'https://traineeapp.azurewebsites.net/gettrainings';
+    return fetch(url)
+        .then(response => response.json())
+        .then(data => data)
+        .catch((error) => {
+            console.log(error);
+            return [];
         });
 }

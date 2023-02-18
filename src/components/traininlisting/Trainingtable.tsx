@@ -72,7 +72,7 @@ export const Trainingtable = (props: Props) => {
     const rows = props.list.map(training => {
         return {
             activity: training.activity,
-            customer: `${training.customer.firstname}  ${training.customer.lastname}`,
+            customer: training.customer ? `${training.customer.firstname}  ${training.customer.lastname}` : '',
             duration: training.duration,
             date: training.date,
             id: training.id
