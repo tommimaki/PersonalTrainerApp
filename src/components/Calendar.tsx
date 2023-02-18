@@ -3,7 +3,8 @@ import React, { useState, useEffect } from 'react';
 import FullCalendar from '@fullcalendar/react';
 import { EventInput } from '@fullcalendar/core';
 import dayGridPlugin from '@fullcalendar/daygrid';
-
+import 'bootstrap/dist/css/bootstrap.css';
+import bootstrap5Plugin from '@fullcalendar/bootstrap';
 
 interface Training {
     id: number;
@@ -53,7 +54,7 @@ const Calendar: React.FC = () => {
     return (
         <div style={{ marginTop: '10px' }}>
             <FullCalendar
-                plugins={[dayGridPlugin]}
+                plugins={[dayGridPlugin, bootstrap5Plugin]}
                 initialView="dayGridMonth"
                 views={{
                     listDay: { buttonText: 'list day' },
@@ -67,7 +68,7 @@ const Calendar: React.FC = () => {
                 }}
                 locale="fi"
                 eventColor="#378006"
-                eventBackgroundColor="darkblue"
+                eventBackgroundColor="darkgray"
                 eventDisplay="block"
                 events={events}
             />
