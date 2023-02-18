@@ -15,8 +15,6 @@ export function fetchCustomers(): Promise<Customer[]> {
 }
 
 
-
-
 export function addCustomer(customer: CustomerResponse): Promise<CustomerResponse> {
     return fetch(baseUrl, {
         method: "POST",
@@ -29,8 +27,6 @@ export function addCustomer(customer: CustomerResponse): Promise<CustomerRespons
             return null;
         });
 }
-
-
 
 export function updateCustomer(
     customer: Customer,
