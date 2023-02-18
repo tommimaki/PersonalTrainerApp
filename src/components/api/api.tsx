@@ -29,20 +29,7 @@ export function addCustomer(customer: CustomerResponse): Promise<CustomerRespons
         });
 }
 
-// export function deleteCustomer(link: string): Promise<void> {
-//     return fetch(link, {
-//         method: "DELETE",
-//     })
-//         .then((response) => {
-//             if (!response.ok) {
-//                 throw new Error("Failed to delete customer.");
-//             }
-//         })
-//         .catch((error) => {
-//             console.log(error);
-//             return null;
-//         });
-// }
+
 
 export function updateCustomer(
     customer: Customer,

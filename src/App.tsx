@@ -1,7 +1,7 @@
 import React from 'react';
 
 
-import { BrowserRouter, BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
+import { BrowserRouter, Route, Routes, Link } from 'react-router-dom';
 import { AppBar, Toolbar, Typography } from '@mui/material';
 
 import { Customerlist } from './components/customerlisting/Customerlist';

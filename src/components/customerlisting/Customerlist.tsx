@@ -74,9 +74,9 @@ export const Customerlist = () => {
             .catch(error => console.log(error))
     }
 
-
     useEffect(() => {
         fetchCustomers().then(data => setCustomerList(data))
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
 
