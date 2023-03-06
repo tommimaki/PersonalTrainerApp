@@ -1,4 +1,5 @@
 # Personal Trainer App
+View here: fluffy-selkie-c90797.netlify.app/
 This is a school project, where an api was provided, the task was to build a user friendly front end, where a PT can track, add, remove, update and view clients and client training data.
 The data can also be exported via CSV files.
 
