@@ -4,10 +4,9 @@ The data can also be exported via CSV files.
 
 Provides basic CRUD functionalities for trainings and customers, also a basic Data display
 
-Technologies used include: FullCalendar, AG-grid, Datepicker, React, Material UI, 
+Technologies used include: FullCalendar, AG-grid, Datepicker, React, Material UI, Build mostly with Typescript.
 ### Screenshots
 ![image](https://user-images.githubusercontent.com/74586216/223181782-4af6b54e-b706-4557-a117-fdb356ce60c5.png)
-
 ![image](https://user-images.githubusercontent.com/74586216/223182157-d175157a-eabd-4b05-bd49-702bf902609a.png)
 ![image](https://user-images.githubusercontent.com/74586216/223182309-323b8cd4-d184-4f09-9c1c-e37324907840.png)
 
