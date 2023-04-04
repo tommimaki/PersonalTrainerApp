@@ -27,7 +27,6 @@ export const EditCustomer: React.FC<EditCustomerProps> = (props: EditCustomerPro
 
     const handleClickOpen = () => {
         console.log(props.customer);
-        // setCar({ brand: props.car.brand, model: props.car.model, color: props.car.color, year: props.car.year, fuel: props.car.fuel, price: props.car.price});
         setOpen(true);
     }
 
@@ -36,9 +35,6 @@ export const EditCustomer: React.FC<EditCustomerProps> = (props: EditCustomerPro
         setCustomer({ ...customer, [name]: value });
     };
 
-    // useEffect(() => {
-    //     setOpen(open);
-    // }, [props.open]);
 
     const save = () => {
         if (Object.values(customer).some(val => val === '')) {

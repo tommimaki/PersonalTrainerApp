@@ -22,11 +22,6 @@ interface Props {
 
 
 export const Customertable = (props: Props) => {
-    console.log(props.list)
-
-
-
-
 
 
     const columns = [

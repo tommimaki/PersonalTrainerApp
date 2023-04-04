@@ -12,7 +12,7 @@ export const Customerlist = () => {
     const [customerList, setCustomerList] = useState<Object[]>([]);
     const [addCustomerDialogOpen, setAddCustomerDialogOpen] = useState(false);
 
-    let url = 'https://traineeapp.azurewebsites.net/api/customers'
+    let url = 'https://traineeapp.azurewebsites.net/api/customers';
 
     function fetchCustomers(): Promise<Customer[]> {
         return fetch(url)
