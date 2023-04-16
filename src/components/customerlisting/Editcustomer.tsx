@@ -49,7 +49,6 @@ export const EditCustomer: React.FC<EditCustomerProps> = (props: EditCustomerPro
             alert('Please fill in all the fields.');
             return;
         }
-
         const httpsLink = convertToHttps(props.link);
         props.updateCustomer(customer, httpsLink);
         handleClickClose();

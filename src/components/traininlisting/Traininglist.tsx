@@ -65,8 +65,6 @@ export const Traininglist = () => {
 
     return (
         <div>
-
-
             <Button variant="contained" onClick={() => setAddTrainingDialogOpen(true)}> add training</Button>
             <AddTraining open={addTrainingDialogOpen} addTraining={addTraining} onClose={() => { setAddTrainingDialogOpen(false) }} />
             <Trainingtable list={trainingList} deleteTraining={deleteTraining} />

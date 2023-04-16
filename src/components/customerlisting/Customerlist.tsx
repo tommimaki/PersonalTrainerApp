@@ -42,11 +42,18 @@ export const Customerlist = () => {
     }
 
 
+    const convertToHttps = (link: string) => {
+        const url = new URL(link);
+        url.protocol = 'https:';
+        return url.href;
+    };
 
     function deleteCustomer(link: string) {
         console.log('deleteCustomer called with link:', link);
+
+        const httpsLink = convertToHttps(link);
         if (window.confirm('Would you like to delete the selected customer?')) {
-            fetch(link, {
+            fetch(httpsLink, {
                 method: 'DELETE'
             })
                 .then(response => {
