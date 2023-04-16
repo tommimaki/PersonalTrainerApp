@@ -10,7 +10,6 @@ import { Customer } from './CustomerDef';
 
 
 interface EditCustomerProps {
-
     updateCustomer: (customer: Customer, link: string) => void;
     link: string;
     customer: Customer;
@@ -19,7 +18,8 @@ interface EditCustomerProps {
 export const EditCustomer: React.FC<EditCustomerProps> = (props: EditCustomerProps) => {
     const [open, setOpen] = useState(false);
     const [customer, setCustomer] = useState(props.customer);
-
+    console.log(`customer`, customer);
+    console.log(`customer.link`, customer.link);
     const handleClickClose = () => {
         setOpen(false);
     };
