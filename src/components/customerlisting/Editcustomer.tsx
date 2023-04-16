@@ -18,8 +18,7 @@ interface EditCustomerProps {
 export const EditCustomer: React.FC<EditCustomerProps> = (props: EditCustomerProps) => {
     const [open, setOpen] = useState(false);
     const [customer, setCustomer] = useState(props.customer);
-    console.log(`customer`, customer);
-    console.log(`customer.link`, customer.link);
+
     const handleClickClose = () => {
         setOpen(false);
     };
@@ -36,14 +35,25 @@ export const EditCustomer: React.FC<EditCustomerProps> = (props: EditCustomerPro
     };
 
 
+
+    const convertToHttps = (link: string) => {
+        const url = new URL(link);
+        url.protocol = 'https:';
+        return url.href;
+    };
+
+
     const save = () => {
         if (Object.values(customer).some(val => val === '')) {
             // If any of the input values are empty, show an error message
             alert('Please fill in all the fields.');
             return;
         }
-        props.updateCustomer(customer, props.link);
+
+        const httpsLink = convertToHttps(props.link);
+        props.updateCustomer(customer, httpsLink);
         handleClickClose();
+
     };
 
     return (
