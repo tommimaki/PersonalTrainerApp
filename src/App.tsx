@@ -10,16 +10,11 @@ import Calendar from './components/Calendar';
 import HomePage from './components/Home';
 import Stats from './components/Stats';
 
-import './App.css';
-
 
 function App() {
   return (
-
-
     <div className="App">
       <BrowserRouter>
-
         <AppBar position='static'>
           <Toolbar>
             <Typography variant="h4" component={Link} to="/" style={{ textDecoration: 'none', color: 'inherit' }}>
@@ -48,9 +43,6 @@ function App() {
           <Route path='/stats' element={<Stats />} />
         </Routes>
       </BrowserRouter>
-
-
-
     </div>
   );
 }
